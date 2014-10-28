@@ -49,6 +49,12 @@ endif
 " when space is pressed, clear all highlights
 nnoremap <Space> :noh<CR>
 
+" folding
+set foldmethod=indent
+set foldnestmax=2
+" do not fold at start
+set foldlevelstart=100
+
 let g:molokai_original = 1
 set laststatus=2
 
