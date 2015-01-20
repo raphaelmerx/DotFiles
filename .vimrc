@@ -21,7 +21,8 @@ Bundle 'scrooloose/syntastic'
 Bundle "wookiehangover/jshint.vim"
 Bundle "kevinw/pyflakes-vim"
 Bundle "tpope/vim-fugitive"
-
+Bundle "kchmck/vim-coffee-script"
+Bundle "digitaltoad/vim-jade"
 
 call vundle#end()
 
