@@ -23,6 +23,8 @@ Bundle "kevinw/pyflakes-vim"
 Bundle "tpope/vim-fugitive"
 Bundle "kchmck/vim-coffee-script"
 Bundle "digitaltoad/vim-jade"
+Bundle "scrooloose/nerdtree"
+Bundle "rking/ag.vim"
 
 call vundle#end()
 
@@ -72,7 +74,7 @@ nnoremap tt  :tabedit<Space>
 nnoremap tn  :tabnext<Space>
 nnoremap tm  :tabm<Space>
 
-" Quit insert mode faster
+" Quit insert mode
 inoremap jj <Esc>
 
 " faster YouCompleteMe 
@@ -89,6 +91,9 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 
 " syntastic
 let g:syntastic_python_checkers = ['pyflakes']
+
+" NERDtree
+autocmd vimenter * NERDTree
 
 " Returns true if paste mode is enabled
 function! HasPaste()
