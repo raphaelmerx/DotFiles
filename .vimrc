@@ -7,19 +7,16 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 
 " syntax highlighting
 Bundle 'slim-template/vim-slim'
 Bundle 'kien/ctrlp.vim'
-" Bundle 'FelikZ/ctrlp-py-matcher' supposed to be a faster ctrlp. unused?
 Bundle 'quanganhdo/grb256'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'pangloss/vim-javascript'
 Bundle 'othree/html5.vim'
 Bundle 'scrooloose/syntastic'
-Bundle "wookiehangover/jshint.vim"
-Bundle "kevinw/pyflakes-vim"
+Bundle 'Valloric/YouCompleteMe'
 Bundle "tpope/vim-fugitive"
 Bundle "kchmck/vim-coffee-script"
 Bundle "digitaltoad/vim-jade"
@@ -29,6 +26,9 @@ Bundle "oplatek/Conque-Shell"
 Bundle "leafgarland/typescript-vim"
 Bundle "palantir/tslint"
 Bundle "bling/vim-airline"
+Bundle "tpope/vim-surround"
+Bundle "easymotion/vim-easymotion"
+Bundle "hynek/vim-python-pep8-indent"
 
 call vundle#end()
 
@@ -94,10 +94,11 @@ let g:indentLine_color_term = 150
 let g:used_javascript_libs = 'angularjs,underscore,backbone'
 
 " syntastic
-let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_typescript_checkers = ['tslint']
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -107,6 +108,12 @@ let g:airline_theme = 'dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', '%l/%L', ':%3v '])
 
-set tags+=../.git/source_tags
-
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+" remove trailing whitespaces for Python files
+autocmd BufWritePre *.py :%s/\s\+$//e
+
+" set tags=./tags;$HOME
+" set tags+=../.git/source_tags
+
+set tw=120
