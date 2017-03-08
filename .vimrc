@@ -21,10 +21,8 @@ Bundle "tpope/vim-fugitive"
 Bundle "kchmck/vim-coffee-script"
 Bundle "digitaltoad/vim-jade"
 Bundle "scrooloose/nerdtree"
-Bundle "rking/ag.vim"
+Bundle "mileszs/ack.vim"
 Bundle "oplatek/Conque-Shell"
-Bundle "leafgarland/typescript-vim"
-Bundle "palantir/tslint"
 Bundle "bling/vim-airline"
 Bundle "tpope/vim-surround"
 Bundle "easymotion/vim-easymotion"
@@ -32,12 +30,10 @@ Bundle "hynek/vim-python-pep8-indent"
 
 call vundle#end()
 
-" execute pathogen#infect()
-" syntax on
-
 set autoindent
 filetype plugin indent on
 syntax enable
+set shell=bash\ -i
 
 " color scheme
 colorscheme molokai
@@ -95,15 +91,14 @@ let g:used_javascript_libs = 'angularjs,underscore,backbone'
 
 " syntastic
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_typescript_checkers = ['tslint']
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l/%L
 " airline
+let g:airline_powerline_fonts = 1 " correct display of Airline characters
 let g:airline_theme = 'dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', '%l/%L', ':%3v '])
@@ -116,4 +111,30 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 " set tags=./tags;$HOME
 " set tags+=../.git/source_tags
 
-set tw=120
+set textwidth=120
+
+" Easymotion https://github.com/easymotion/vim-easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap f <Plug>(easymotion-overwin-f)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" riotJS .tag highlighting
+au BufNewFile,BufRead *.tag setlocal filetype=html
+" force html filetype to html, to avoid filetype=htmldjango, which is good for Django tags highlighting, but which
+" detects the {# <script> #}
+au BufRead,BufNewFile *.html setlocal filetype=html
+
+" ack uses ag
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" .md files are markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+let vim_markdown_preview_toggle = 1
+
+" show line numbers
+set nu
