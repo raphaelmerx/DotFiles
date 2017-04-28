@@ -15,7 +15,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'quanganhdo/grb256'
 Bundle 'pangloss/vim-javascript'
 Bundle 'othree/html5.vim'
-Bundle 'scrooloose/syntastic'
+Bundle 'vim-syntastic/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle "tpope/vim-fugitive"
 Bundle "kchmck/vim-coffee-script"
@@ -27,6 +27,7 @@ Bundle "bling/vim-airline"
 Bundle "tpope/vim-surround"
 Bundle "easymotion/vim-easymotion"
 Bundle "hynek/vim-python-pep8-indent"
+Bundle "jmcantrell/vim-virtualenv"
 
 call vundle#end()
 
@@ -91,6 +92,7 @@ let g:used_javascript_libs = 'angularjs,underscore,backbone'
 
 " syntastic
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_exe = 'unset PYTHONPATH; python -m flake8 --jobs 1'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
@@ -138,3 +140,5 @@ let vim_markdown_preview_toggle = 1
 
 " show line numbers
 set nu
+
+let g:virtualenv_auto_activate = 1
