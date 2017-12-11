@@ -3,3 +3,6 @@
 
 # But not these files...
 !.*rc
+.netrc
+.npmrc
+.pypirc

@@ -65,21 +65,15 @@ set laststatus=2
 
 set bs=2 "set backspace to be able to delete previous characters
 
-" Smart way to move between tabs
-map <leader>tt :tabnew<CR>
-nnoremap th  :tabfirst<CR>
-nnoremap tj  :tabnext<CR>
-nnoremap tk  :tabprev<CR>
-nnoremap tl  :tablast<CR>
-nnoremap tt  :tabedit<Space>
-nnoremap tn  :tabnext<Space>
-nnoremap tm  :tabm<Space>
-
 " Quit insert mode
 inoremap jj <Esc>
 
 " faster YouCompleteMe
 imap <Tab> <C-P>
+
+" add new line without entering insert mode
+nmap oo o<Esc>
+nmap OO O<Esc>
 
 " Indenting
 set cindent
@@ -136,6 +130,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " .md files are markdown
 au BufNewFile,BufRead *.md set filetype=markdown
+autocmd bufreadpre *.html setlocal textwidth=0
 let vim_markdown_preview_toggle = 1
 
 " show line numbers
