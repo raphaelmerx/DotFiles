@@ -124,16 +124,20 @@ au BufNewFile,BufRead *.tag setlocal filetype=html
 " force html filetype to html, to avoid filetype=htmldjango, which is good for Django tags highlighting, but which
 " detects the {# <script> #}
 au BufRead,BufNewFile *.html setlocal filetype=html
-
-" ack uses ag
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
 " .md files are markdown
 au BufNewFile,BufRead *.md set filetype=markdown
 autocmd bufreadpre *.html setlocal textwidth=0
 let vim_markdown_preview_toggle = 1
+" Vagrantfile is ruby
+au BufRead,BufNewFile Vagrantfile set filetype=ruby
+
+" ack uses ag
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " show line numbers
 set nu
 
 let g:virtualenv_auto_activate = 1
+
+" load project specific vimrc from directory where vim is called
+set exrc
