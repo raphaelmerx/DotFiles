@@ -28,6 +28,7 @@ Bundle "tpope/vim-surround"
 Bundle "easymotion/vim-easymotion"
 Bundle "hynek/vim-python-pep8-indent"
 Bundle "jmcantrell/vim-virtualenv"
+Bundle "mattn/emmet-vim"
 
 call vundle#end()
 
