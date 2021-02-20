@@ -29,6 +29,7 @@ Bundle "easymotion/vim-easymotion"
 Bundle "hynek/vim-python-pep8-indent"
 Bundle "jmcantrell/vim-virtualenv"
 Bundle "mattn/emmet-vim"
+Bundle 'posva/vim-vue'
 
 call vundle#end()
 
@@ -89,6 +90,9 @@ let g:used_javascript_libs = 'angularjs,underscore,backbone'
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_exe = 'unset PYTHONPATH; python -m flake8 --jobs 1'
 let g:syntastic_javascript_checkers = ['eslint']
+if executable('node_modules/.bin/eslint')
+  let b:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
+endif
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
